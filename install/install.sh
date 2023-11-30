@@ -141,7 +141,7 @@ then
     alias docker=dind
 fi
 
-sudo usermod -aG docker pi
+sudo usermod -aG docker valorrobotics
 
 # Stop and remove all docker if NO_CLEAN is not defined
 test $NO_CLEAN || (
@@ -166,9 +166,9 @@ if [ -f /etc/dhcpcd.conf ]
 then
     echo "Disabling automatic Link-local configuration in dhcpd.conf."
     # delete line if it already exists
-    sed -i '/noipv4ll/d' /etc/dhcpcd.conf
+    sed -i '/noipv4ll/d' /etc/dhcp/dhclient.conf
     # add noipv4ll
-    sed -i '$ a noipv4ll' /etc/dhcpcd.conf
+    sed -i '$ a noipv4ll' /etc/dhcp/dhclient.conf
 else
     echo "Not modifying /etc/dhcpcd.conf - file does not exist"
 fi
